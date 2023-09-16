@@ -22,8 +22,8 @@ We highly reccomend for new developers to try to develop their own sudoku solver
     - The uncompromising Python code formatter.
   - Isort:
     - A Python utility / library to sort imports alphabetically, and automatically separated into sections and by type.
-  - Flake8:
-    - A tool that glues together pep8, pyflakes, mccabe, and third-party plugins to check the style and quality of some python code.
+  - Ruff:
+    - Python linter written in Rust.
   - Pytest:
     - The pytest framework makes it easy to write small tests, yet scales to support complex functional testing for applications and libraries.
 
