@@ -9,6 +9,50 @@ packages = [{ include = "toolbox.py" }]
 license = "MIT"
 
 
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+python-dotenv = "^1.0.0"
+py-sudoku = "^1.0.3"
+typer = { extras = ["all"], version = "^0.9.0" }
+uvicorn = "0.23.2"
+fastapi = "^0.103.1"
+pydantic = "2.3.0"
+python-multipart = "~0.0.6"
+email-validator = "^2.0.0.post2"
+httpx = "^0.24.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.25.1"
+isort = "^5.12.0"
+black = { extras = ["jupyter"], version = "^23.7.0" }
+ruff = "^0.0.287"
+pre-commit = "^3.4.0"
+poethepoet = "^0.22.0"
+frenchmaid = "^0.2.3"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+
+
+# poetry install --with docs
+[tool.poetry.group.docs]
+optional = true
+
+
+[tool.poetry.group.docs.dependencies]
+pdoc3 = "^0.10.0"
+
+
+[tool.poetry.group.analysis]
+optional = true
+
+
+[tool.poetry.group.analysis.dependencies]
+pygount = "1.6.1"
+
+
 [tool.ruff]
 # Run `ruff linter` command to see all available linters and their descriptions
 target-version = "py311"
@@ -30,11 +74,9 @@ ignore = [
   "E402", # module level import not at top of file
   "E712", # comparison to True should be 'if cond is True:' or 'if cond:'
 ]
-exclude = [
-  "alembic",
-  "migrations",
-]
+exclude = ["alembic", "migrations"]
 show-fixes = true
+
 
 [tool.isort]
 profile = "black"
@@ -74,6 +116,7 @@ exclude = '''
 [tool.poetry.scripts]
 toolbox = "toolbox:app"
 
+
 [tool.poe.tasks]
 line-count = "pygount --format=summary"
 test = "pytest -v -s"
@@ -85,40 +128,3 @@ run = "uvicorn --port 5000 --reload main:app"
 toolbox = { script = "toolbox.__main__:app" }
 clean = "frenchmaid clean"
 requirements = "poetry export -f requirements.txt --output pyproject.txt --without-hashes"
-
-[tool.poetry.dependencies]
-python = ">=3.11,<3.12"
-python-dotenv = "^1.0.0"
-py-sudoku = "^1.0.3"
-typer = { extras = ["all"], version = "^0.9.0" }
-uvicorn = "0.23.2"
-fastapi = "^0.103.1"
-pydantic = "2.3.0"
-python-multipart = "~0.0.6"
-email-validator = "^2.0.0.post2"
-httpx = "^0.24.1"
-
-[tool.poetry.group.dev.dependencies]
-ipykernel = "^6.25.1"
-isort = "^5.12.0"
-black = { extras = ["jupyter"], version = "^23.7.0" }
-ruff = "^0.0.287"
-pre-commit = "^3.4.0"
-poethepoet = "^0.22.0"
-frenchmaid = "^0.2.3"
-
-[tool.poetry.group.test.dependencies]
-pytest = "^7.4.0"
-
-# poetry install --with docs
-[tool.poetry.group.docs]
-optional = true
-
-[tool.poetry.group.docs.dependencies]
-pdoc3 = "^0.10.0"
-
-[tool.poetry.group.analysis]
-optional = true
-
-[tool.poetry.group.analysis.dependencies]
-pygount = "1.6.1"
