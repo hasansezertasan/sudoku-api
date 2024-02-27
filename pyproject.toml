@@ -9,6 +9,10 @@ packages = [{ include = "toolbox.py" }]
 license = "MIT"
 
 
+[tool.poetry.scripts]
+toolbox = "toolbox:app"
+
+
 [tool.poetry.dependencies]
 python = ">=3.11,<3.12"
 python-dotenv = "^1.0.0"
@@ -111,10 +115,6 @@ exclude = '''
   )/
 )
 '''
-
-
-[tool.poetry.scripts]
-toolbox = "toolbox:app"
 
 
 [tool.poe.tasks]
